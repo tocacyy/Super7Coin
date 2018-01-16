@@ -43,7 +43,7 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfStakeLimitV2(~uint256(0) >> 34);
 
-unsigned int nStakeMinAge = 25 * 60 * 60; // 75 hours
+unsigned int nStakeMinAge = 60; // 75 hours
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
 
 int nCoinbaseMaturity = 15;  //15
@@ -4245,16 +4245,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
-    int64_t ret = blockValue * 0.5; //50% on start
-
-	 if(pindexBest->nHeight > 77777 || pindexBest->nHeight <= 777777 )
-	    {
-		 int64_t ret = blockValue * 0.6;
-	    }
-         if(pindexBest->nHeight > 777777)
-            {
-                 int64_t ret = blockValue * 0.7;
-            }
+    int64_t ret = blockValue * 0.7; //70% on start
 
     return ret;
 }
